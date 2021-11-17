@@ -14,7 +14,7 @@ snyktoken = os.environ['SNYK_TOKEN']
 snykgroup = os.environ['SNYK_GROUP']
 
 # this sets the session to include retries in case of api timeouts etc
-client = snyk.SnykClient(snyktoken, tries=3, delay=1, backoff=1)
+client = snyk.SnykClient(snyktoken, tries=3, delay=1, backoff=2)
 
 # remove the phantom orgs that are really the groups
 orgs = [ y for y in client.organizations.all() if hasattr(y.group,'id') ]
