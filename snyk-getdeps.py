@@ -27,5 +27,9 @@ print ("Dependency,Version,Project URL")
 for org in orgs:
   for dep in org.dependencies.all():
     for project in dep.projects:
-      print(dep.name + "," + dep.version + "," + org.url + "/project/" + project.id)
+      dep_name = dep.name or "nodata"
+      dep_version = dep.version or "nodata"
+      org_url = org.url or "nodata"
+      project_id = project.id or "nodata"
+      print(dep_name + "," + dep_version + "," + org_url + "/project/" + project_id)
  
