@@ -21,16 +21,11 @@ orgs = [ y for y in client.organizations.all() if hasattr(y.group,'id') ]
 # remove orgs that don't match the snykgroup
 orgs = [ y for y in orgs if y.group.id == snykgroup ]
 
-deps = []
-
 # CSV header
 print ("Dependency,Version,Project URL")
 
 for org in orgs:
-  deps.append(org.dependencies.all())
-
-for orgdeps in deps:
-	for dep in orgdeps:
-		for project in dep.projects:
-			print(dep.name + "," + dep.version + "," + org.url + "/project/" + project.id)
+  for dep in org.dependencies.all():
+    for project in dep.projects:
+      print(dep.name + "," + dep.version + "," + org.url + "/project/" + project.id)
  
