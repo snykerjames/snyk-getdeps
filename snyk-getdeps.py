@@ -23,6 +23,9 @@ orgs = [ y for y in orgs if y.group.id == snykgroup ]
 
 deps = []
 
+# CSV header
+print ("Dependency,Version,Project URL")
+
 for org in orgs:
   deps.append(org.dependencies.all())
 
